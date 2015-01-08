@@ -26,7 +26,9 @@ function upload(opts) {
     });
     return prog;
 }
-upload.MAPBOX = 'https://cloudfront-staging.tilestream.net/';
+upload.MAPBOX = 'https://api.tiles.mapbox.com';
+
+if (process.env.MapboxAPI) upload.MAPBOX = 'https://cloudfront-staging.tilestream.net/';
 
 upload.opts = function(opts) {
     opts = opts || {};
