@@ -43,7 +43,9 @@ if (filepath.indexOf('http') === 0) {
     var progress = upload(options);
 
     progress.on('progress', function(progress) {
-        console.log(Math.round(progress.percentage) + '%');
+        util.print(util.format('\r\033[KUploaded %s%',
+            Math.round(progress.percentage)
+        ));
     });
     progress.on('error', function(err) {
         console.error(err.message);
